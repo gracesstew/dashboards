@@ -1,11 +1,54 @@
 ---
-title: "dashboards"
+title: "star wars dash"
+author: "grace stewart"
+format: 
+  dashboard:
+    orientation: columns #rows=default
 ---
 
-This is a Quarto website.
+```{r, echo=FALSE}
+library(tidyverse) #plot
+library(plotly) #interactiveness
+```
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+# page1
+
+## row1
+
+```{r, warning=FALSE}
+p1 <- ggplot(starwars, aes (x= mass, y= height, text=name)) +
+  geom_point()
+
+ggplotly(p1)
+```
+
+## row2 {.tabset}
 
 ```{r}
-1 + 1
+#| title: barchart
+
+
+p2 <- ggplot(starwars, aes (x= name, y= height, fill=gender)) +
+  geom_bar(stat="identity")
+
+ggplotly(p2)
 ```
+
+```{r}
+#| title: table
+
+starwars <- starwars %>% 
+  select(name, height, mass, species)
+
+knitr::kable(starwars)
+```
+
+# page 2
+
+## row1
+```{r}
+ggplot(starwars, aes (x= height, y= mass)) +
+  geom_point()
+```
+
+
