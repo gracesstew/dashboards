@@ -7,8 +7,8 @@ website:
   navbar:
     left:
       - href: index.qmd
-        text: Home
-      - about.qmd
+        text: Starwars
+      - penguins.qmd
 
 format:
   html:

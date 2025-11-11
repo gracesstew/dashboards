@@ -1,0 +1,67 @@
+---
+title: "Penguins"
+author: "Grace Stewart"
+format: 
+  dashboard:
+    orientation: rows
+---
+
+```{r}
+#install.packages("palmerpenguins")
+library(tidyverse)
+library(plotly)
+library(palmerpenguins)
+library(skimr)
+```
+
+# Penguins Data
+
+## row1 {.tabset}
+```{r}
+#| title: Histogram
+
+p1 <- ggplot(penguins, aes(x= flipper_length_mm, fill= species)) +
+  geom_histogram() +
+  theme_bw() +
+  labs(title = "Flipper Length (mm) Based on Species",
+       x = "Flipper Length (mm)",
+       y = "Number of Penguins")
+
+ggplotly(p1)
+  
+```
+
+```{r}
+#| title: Scatterplot
+
+p2 <- ggplot(penguins, aes(x= flipper_length_mm, y= body_mass_g, color= species)) +
+  geom_point() +
+  theme_bw() +
+  labs (
+    title = "Flipper Length per Species",
+    x = "Flipper Length (mm)",
+    y = "Body Mass (g)",
+    color = "Species"
+  )
+
+ggplotly(p2)
+```
+
+
+## row2
+
+```{r}
+
+peng_tbl <- penguins %>% 
+  select(species, island, flipper_length_mm, sex, year)
+
+knitr::kable(peng_tbl)
+```
+
+
+# Data Summary
+
+```{r}
+skim(penguins)
+```
+

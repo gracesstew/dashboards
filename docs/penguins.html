@@ -1,0 +1,3249 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Grace Stewart">
+
+<title>Penguins – dashboards</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-530bf8e59df25186f8bffdc63bad3503.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-dashboard/quarto-dashboard.js"></script>
+<script src="site_libs/quarto-dashboard/stickythead.js"></script>
+<script src="site_libs/quarto-dashboard/datatables.min.js" kdttablesentinel="true"></script>
+<script src="site_libs/quarto-dashboard/pdfmake.min.js" kdttablesentinel="true"></script>
+<script src="site_libs/quarto-dashboard/vfs_fonts.js" kdttablesentinel="true"></script>
+<script src="site_libs/quarto-dashboard/web-components.js" type="module"></script>
+<script src="site_libs/quarto-dashboard/components.js"></script>
+<link href="site_libs/quarto-dashboard/datatables.min.css" rel="stylesheet" kdttablesentinel="true">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.11.0/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+</head>
+
+<body class="quarto-dashboard nav-fixed dashboard-fill fullcontent">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">dashboards</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Starwars</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./penguins.html" aria-current="page"> 
+<span class="menu-text">Penguins</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+<header id="quarto-dashboard-header">
+<nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
+  <div class="navbar-container container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-controls="dashboard-collapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>    
+
+
+    <div class="navbar-brand-container">       
+
+      <div class="navbar-title">
+        <div class="navbar-title-text"><a href="#">Penguins</a></div>
+        
+        <div class="navbar-author">Grace Stewart</div>
+      </div>
+    </div>
+<div id="dashboard-collapse" class="navbar-collapse collapse"><ul class="navbar-nav navbar-nav-scroll me-auto" role="tablist"><li class="nav-item" role="presentation"><a id="tab-penguins-data" class="nav-link active" data-bs-toggle="tab" role="tab" data-bs-target="#penguins-data" data-scrolling="false" href="#penguins-data" aria-controls="penguins-data" aria-selected="true"><span class="nav-link-text">Penguins Data</span></a></li><li class="nav-item" role="presentation"><a id="tab-data-summary" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#data-summary" data-scrolling="false" href="#data-summary" aria-controls="data-summary" aria-selected="false"><span class="nav-link-text">Data Summary</span></a></li></ul></div></div>
+</nav>
+</header></header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-layout-custom page-navbar quarto-dashboard-content bslib-gap-spacing html-fill-container bslib-page-fill quarto-dashboard-pages">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+<!-- main -->
+
+<div class="bslib-grid-item html-fill-item tab-content bslib-grid" data-layout="fill" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div id="penguins-data" class="dashboard-page tab-pane show active html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-penguins-data">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr) minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card tabset html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header bslib-navs-card-title"><div class="card-title"><span style="display: inline">
+
+</span></div><ul class="nav nav-tabs card-header-tabs" role="tablist" data-tabsetid="card-tabset-1"><li class="nav-item" role="presentation"><a href="#card-tabset-1-1" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Histogram" aria-selected="true" class="nav-link active">Histogram</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-1-2" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Scatterplot" aria-selected="false" class="nav-link">Scatterplot</a></li></ul></div>
+
+
+<div class="tab-content html-fill-item html-fill-container" data-tabset-id="card-tabset-1"><div class="tab-pane active show html-fill-item html-fill-container" role="tabpanel" id="card-tabset-1-1"><div class="card-body html-fill-item html-fill-container" data-title="Histogram">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-a7966c67f5cf6d4fa736" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-a7966c67f5cf6d4fa736">{"x":{"data":[{"orientation":"v","width":[2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975],"base":[0,0,0,1,2,0,1,6,2,6,7,8,9,6,7,6,2,3,12,15,13,18,14,10,13,8,7,1,6,8],"x":[172,174.0344827586207,176.06896551724137,178.10344827586206,180.13793103448276,182.17241379310343,184.20689655172413,186.24137931034483,188.27586206896552,190.31034482758622,192.34482758620689,194.37931034482759,196.41379310344826,198.44827586206895,200.48275862068965,202.51724137931035,204.55172413793105,206.58620689655172,208.62068965517241,210.65517241379308,212.68965517241378,214.72413793103448,216.75862068965517,218.79310344827587,220.82758620689654,222.86206896551724,224.89655172413791,226.93103448275861,228.9655172413793,231],"y":[1,1,1,4,10,5,15,17,11,29,15,14,11,8,3,3,1,0,1,1,0,0,0,0,0,0,0,0,0,0],"text":["count:  1<br />flipper_length_mm: 172.0000<br />species: Adelie","count:  1<br />flipper_length_mm: 174.0345<br />species: Adelie","count:  1<br />flipper_length_mm: 176.0690<br />species: Adelie","count:  4<br />flipper_length_mm: 178.1034<br />species: Adelie","count: 10<br />flipper_length_mm: 180.1379<br />species: Adelie","count:  5<br />flipper_length_mm: 182.1724<br />species: Adelie","count: 15<br />flipper_length_mm: 184.2069<br />species: Adelie","count: 17<br />flipper_length_mm: 186.2414<br />species: Adelie","count: 11<br />flipper_length_mm: 188.2759<br />species: Adelie","count: 29<br />flipper_length_mm: 190.3103<br />species: Adelie","count: 15<br />flipper_length_mm: 192.3448<br />species: Adelie","count: 14<br />flipper_length_mm: 194.3793<br />species: Adelie","count: 11<br />flipper_length_mm: 196.4138<br />species: Adelie","count:  8<br />flipper_length_mm: 198.4483<br />species: Adelie","count:  3<br />flipper_length_mm: 200.4828<br />species: Adelie","count:  3<br />flipper_length_mm: 202.5172<br />species: Adelie","count:  1<br />flipper_length_mm: 204.5517<br />species: Adelie","count:  0<br />flipper_length_mm: 206.5862<br />species: Adelie","count:  1<br />flipper_length_mm: 208.6207<br />species: Adelie","count:  1<br />flipper_length_mm: 210.6552<br />species: Adelie","count:  0<br />flipper_length_mm: 212.6897<br />species: Adelie","count:  0<br />flipper_length_mm: 214.7241<br />species: Adelie","count:  0<br />flipper_length_mm: 216.7586<br />species: Adelie","count:  0<br />flipper_length_mm: 218.7931<br />species: Adelie","count:  0<br />flipper_length_mm: 220.8276<br />species: Adelie","count:  0<br />flipper_length_mm: 222.8621<br />species: Adelie","count:  0<br />flipper_length_mm: 224.8966<br />species: Adelie","count:  0<br />flipper_length_mm: 226.9310<br />species: Adelie","count:  0<br />flipper_length_mm: 228.9655<br />species: Adelie","count:  0<br />flipper_length_mm: 231.0000<br />species: Adelie"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"name":"Adelie","legendgroup":"Adelie","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,12,12,12,18,14,10,13,8,7,1,6,8],"x":[172,174.0344827586207,176.06896551724137,178.10344827586206,180.13793103448276,182.17241379310343,184.20689655172413,186.24137931034483,188.27586206896552,190.31034482758622,192.34482758620689,194.37931034482759,196.41379310344826,198.44827586206895,200.48275862068965,202.51724137931035,204.55172413793105,206.58620689655172,208.62068965517241,210.65517241379308,212.68965517241378,214.72413793103448,216.75862068965517,218.79310344827587,220.82758620689654,222.86206896551724,224.89655172413791,226.93103448275861,228.9655172413793,231],"y":[0,0,0,1,2,0,1,6,2,6,7,8,9,6,7,5,2,2,0,3,1,0,0,0,0,0,0,0,0,0],"text":["count:  0<br />flipper_length_mm: 172.0000<br />species: Chinstrap","count:  0<br />flipper_length_mm: 174.0345<br />species: Chinstrap","count:  0<br />flipper_length_mm: 176.0690<br />species: Chinstrap","count:  1<br />flipper_length_mm: 178.1034<br />species: Chinstrap","count:  2<br />flipper_length_mm: 180.1379<br />species: Chinstrap","count:  0<br />flipper_length_mm: 182.1724<br />species: Chinstrap","count:  1<br />flipper_length_mm: 184.2069<br />species: Chinstrap","count:  6<br />flipper_length_mm: 186.2414<br />species: Chinstrap","count:  2<br />flipper_length_mm: 188.2759<br />species: Chinstrap","count:  6<br />flipper_length_mm: 190.3103<br />species: Chinstrap","count:  7<br />flipper_length_mm: 192.3448<br />species: Chinstrap","count:  8<br />flipper_length_mm: 194.3793<br />species: Chinstrap","count:  9<br />flipper_length_mm: 196.4138<br />species: Chinstrap","count:  6<br />flipper_length_mm: 198.4483<br />species: Chinstrap","count:  7<br />flipper_length_mm: 200.4828<br />species: Chinstrap","count:  5<br />flipper_length_mm: 202.5172<br />species: Chinstrap","count:  2<br />flipper_length_mm: 204.5517<br />species: Chinstrap","count:  2<br />flipper_length_mm: 206.5862<br />species: Chinstrap","count:  0<br />flipper_length_mm: 208.6207<br />species: Chinstrap","count:  3<br />flipper_length_mm: 210.6552<br />species: Chinstrap","count:  1<br />flipper_length_mm: 212.6897<br />species: Chinstrap","count:  0<br />flipper_length_mm: 214.7241<br />species: Chinstrap","count:  0<br />flipper_length_mm: 216.7586<br />species: Chinstrap","count:  0<br />flipper_length_mm: 218.7931<br />species: Chinstrap","count:  0<br />flipper_length_mm: 220.8276<br />species: Chinstrap","count:  0<br />flipper_length_mm: 222.8621<br />species: Chinstrap","count:  0<br />flipper_length_mm: 224.8966<br />species: Chinstrap","count:  0<br />flipper_length_mm: 226.9310<br />species: Chinstrap","count:  0<br />flipper_length_mm: 228.9655<br />species: Chinstrap","count:  0<br />flipper_length_mm: 231.0000<br />species: Chinstrap"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(0,186,56,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"name":"Chinstrap","legendgroup":"Chinstrap","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975,2.0344827586206975],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[172,174.0344827586207,176.06896551724137,178.10344827586206,180.13793103448276,182.17241379310343,184.20689655172413,186.24137931034483,188.27586206896552,190.31034482758622,192.34482758620689,194.37931034482759,196.41379310344826,198.44827586206895,200.48275862068965,202.51724137931035,204.55172413793105,206.58620689655172,208.62068965517241,210.65517241379308,212.68965517241378,214.72413793103448,216.75862068965517,218.79310344827587,220.82758620689654,222.86206896551724,224.89655172413791,226.93103448275861,228.9655172413793,231],"y":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,12,12,12,18,14,10,13,8,7,1,6,8],"text":["count:  0<br />flipper_length_mm: 172.0000<br />species: Gentoo","count:  0<br />flipper_length_mm: 174.0345<br />species: Gentoo","count:  0<br />flipper_length_mm: 176.0690<br />species: Gentoo","count:  0<br />flipper_length_mm: 178.1034<br />species: Gentoo","count:  0<br />flipper_length_mm: 180.1379<br />species: Gentoo","count:  0<br />flipper_length_mm: 182.1724<br />species: Gentoo","count:  0<br />flipper_length_mm: 184.2069<br />species: Gentoo","count:  0<br />flipper_length_mm: 186.2414<br />species: Gentoo","count:  0<br />flipper_length_mm: 188.2759<br />species: Gentoo","count:  0<br />flipper_length_mm: 190.3103<br />species: Gentoo","count:  0<br />flipper_length_mm: 192.3448<br />species: Gentoo","count:  0<br />flipper_length_mm: 194.3793<br />species: Gentoo","count:  0<br />flipper_length_mm: 196.4138<br />species: Gentoo","count:  0<br />flipper_length_mm: 198.4483<br />species: Gentoo","count:  0<br />flipper_length_mm: 200.4828<br />species: Gentoo","count:  1<br />flipper_length_mm: 202.5172<br />species: Gentoo","count:  0<br />flipper_length_mm: 204.5517<br />species: Gentoo","count:  1<br />flipper_length_mm: 206.5862<br />species: Gentoo","count: 12<br />flipper_length_mm: 208.6207<br />species: Gentoo","count: 12<br />flipper_length_mm: 210.6552<br />species: Gentoo","count: 12<br />flipper_length_mm: 212.6897<br />species: Gentoo","count: 18<br />flipper_length_mm: 214.7241<br />species: Gentoo","count: 14<br />flipper_length_mm: 216.7586<br />species: Gentoo","count: 10<br />flipper_length_mm: 218.7931<br />species: Gentoo","count: 13<br />flipper_length_mm: 220.8276<br />species: Gentoo","count:  8<br />flipper_length_mm: 222.8621<br />species: Gentoo","count:  7<br />flipper_length_mm: 224.8966<br />species: Gentoo","count:  1<br />flipper_length_mm: 226.9310<br />species: Gentoo","count:  6<br />flipper_length_mm: 228.9655<br />species: Gentoo","count:  8<br />flipper_length_mm: 231.0000<br />species: Gentoo"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(97,156,255,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"name":"Gentoo","legendgroup":"Gentoo","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":40.840182648401829,"r":7.3059360730593621,"b":37.260273972602747,"l":37.260273972602747},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"Flipper Length (mm) Based on Species","font":{"color":"rgba(0,0,0,1)","family":"","size":17.534246575342465},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[167.93103448275861,235.06896551724139],"tickmode":"array","ticktext":["180","200","220"],"tickvals":[180,200,220],"categoryorder":"array","categoryarray":["180","200","220"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"Flipper Length (mm)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1.75,36.75],"tickmode":"array","ticktext":["0","10","20","30"],"tickvals":[0,10,20,30],"categoryorder":"array","categoryarray":["0","10","20","30"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"Number of Penguins","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"rgba(255,255,255,1)","line":{"color":"rgba(51,51,51,1)","width":0,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"species","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"1f8365b14f3a":{"x":{},"fill":{},"type":"bar"}},"cur_data":"1f8365b14f3a","visdat":{"1f8365b14f3a":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-1-2"><div class="card-body html-fill-item html-fill-container" data-title="Scatterplot">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-7a878e3c425fa03520dc" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-7a878e3c425fa03520dc">{"x":{"data":[{"x":[181,186,195,null,193,190,181,195,193,190,186,180,182,191,198,185,195,197,184,194,174,180,189,185,180,187,183,187,172,180,178,178,188,184,195,196,190,180,181,184,182,195,186,196,185,190,182,179,190,191,186,188,190,200,187,191,186,193,181,194,185,195,185,192,184,192,195,188,190,198,190,190,196,197,190,195,191,184,187,195,189,196,187,193,191,194,190,189,189,190,202,205,185,186,187,208,190,196,178,192,192,203,183,190,193,184,199,190,181,197,198,191,193,197,191,196,188,199,189,189,187,198,176,202,186,199,191,195,191,210,190,197,193,199,187,190,191,200,185,193,193,187,188,190,192,185,190,184,195,193,187,201],"y":[3750,3800,3250,null,3450,3650,3625,4675,3475,4250,3300,3700,3200,3800,4400,3700,3450,4500,3325,4200,3400,3600,3800,3950,3800,3800,3550,3200,3150,3950,3250,3900,3300,3900,3325,4150,3950,3550,3300,4650,3150,3900,3100,4400,3000,4600,3425,2975,3450,4150,3500,4300,3450,4050,2900,3700,3550,3800,2850,3750,3150,4400,3600,4050,2850,3950,3350,4100,3050,4450,3600,3900,3550,4150,3700,4250,3700,3900,3550,4000,3200,4700,3800,4200,3350,3550,3800,3500,3950,3600,3550,4300,3400,4450,3300,4300,3700,4350,2900,4100,3725,4725,3075,4250,2925,3550,3750,3900,3175,4775,3825,4600,3200,4275,3900,4075,2900,3775,3350,3325,3150,3500,3450,3875,3050,4000,3275,4300,3050,4000,3325,3500,3500,4475,3425,3900,3175,3975,3400,4250,3400,3475,3050,3725,3000,3650,4250,3475,3450,3750,3700,4000],"text":["flipper_length_mm: 181<br />body_mass_g: 3750<br />species: Adelie","flipper_length_mm: 186<br />body_mass_g: 3800<br />species: Adelie","flipper_length_mm: 195<br />body_mass_g: 3250<br />species: Adelie","flipper_length_mm:  NA<br />body_mass_g:   NA<br />species: Adelie","flipper_length_mm: 193<br />body_mass_g: 3450<br />species: Adelie","flipper_length_mm: 190<br />body_mass_g: 3650<br />species: Adelie","flipper_length_mm: 181<br />body_mass_g: 3625<br />species: Adelie","flipper_length_mm: 195<br />body_mass_g: 4675<br />species: Adelie","flipper_length_mm: 193<br />body_mass_g: 3475<br />species: Adelie","flipper_length_mm: 190<br />body_mass_g: 4250<br />species: Adelie","flipper_length_mm: 186<br />body_mass_g: 3300<br />species: Adelie","flipper_length_mm: 180<br />body_mass_g: 3700<br />species: Adelie","flipper_length_mm: 182<br />body_mass_g: 3200<br />species: Adelie","flipper_length_mm: 191<br />body_mass_g: 3800<br />species: Adelie","flipper_length_mm: 198<br />body_mass_g: 4400<br />species: Adelie","flipper_length_mm: 185<br />body_mass_g: 3700<br />species: Adelie","flipper_length_mm: 195<br />body_mass_g: 3450<br />species: Adelie","flipper_length_mm: 197<br />body_mass_g: 4500<br />species: Adelie","flipper_length_mm: 184<br />body_mass_g: 3325<br />species: Adelie","flipper_length_mm: 194<br />body_mass_g: 4200<br />species: Adelie","flipper_length_mm: 174<br />body_mass_g: 3400<br />species: Adelie","flipper_length_mm: 180<br />body_mass_g: 3600<br />species: Adelie","flipper_length_mm: 189<br />body_mass_g: 3800<br />species: Adelie","flipper_length_mm: 185<br />body_mass_g: 3950<br />species: Adelie","flipper_length_mm: 180<br />body_mass_g: 3800<br />species: Adelie","flipper_length_mm: 187<br />body_mass_g: 3800<br />species: Adelie","flipper_length_mm: 183<br />body_mass_g: 3550<br />species: Adelie","flipper_length_mm: 187<br />body_mass_g: 3200<br />species: Adelie","flipper_length_mm: 172<br />body_mass_g: 3150<br />species: Adelie","flipper_length_mm: 180<br />body_mass_g: 3950<br />species: Adelie","flipper_length_mm: 178<br />body_mass_g: 3250<br />species: Adelie","flipper_length_mm: 178<br />body_mass_g: 3900<br />species: Adelie","flipper_length_mm: 188<br />body_mass_g: 3300<br />species: Adelie","flipper_length_mm: 184<br />body_mass_g: 3900<br />species: Adelie","flipper_length_mm: 195<br />body_mass_g: 3325<br />species: Adelie","flipper_length_mm: 196<br />body_mass_g: 4150<br />species: Adelie","flipper_length_mm: 190<br />body_mass_g: 3950<br />species: Adelie","flipper_length_mm: 180<br />body_mass_g: 3550<br />species: Adelie","flipper_length_mm: 181<br />body_mass_g: 3300<br />species: Adelie","flipper_length_mm: 184<br />body_mass_g: 4650<br />species: Adelie","flipper_length_mm: 182<br />body_mass_g: 3150<br />species: Adelie","flipper_length_mm: 195<br />body_mass_g: 3900<br />species: Adelie","flipper_length_mm: 186<br />body_mass_g: 3100<br />species: Adelie","flipper_length_mm: 196<br />body_mass_g: 4400<br />species: Adelie","flipper_length_mm: 185<br />body_mass_g: 3000<br />species: Adelie","flipper_length_mm: 190<br />body_mass_g: 4600<br />species: Adelie","flipper_length_mm: 182<br />body_mass_g: 3425<br />species: Adelie","flipper_length_mm: 179<br />body_mass_g: 2975<br />species: Adelie","flipper_length_mm: 190<br />body_mass_g: 3450<br />species: Adelie","flipper_length_mm: 191<br />body_mass_g: 4150<br />species: Adelie","flipper_length_mm: 186<br />body_mass_g: 3500<br />species: Adelie","flipper_length_mm: 188<br />body_mass_g: 4300<br />species: Adelie","flipper_length_mm: 190<br />body_mass_g: 3450<br />species: Adelie","flipper_length_mm: 200<br />body_mass_g: 4050<br />species: Adelie","flipper_length_mm: 187<br />body_mass_g: 2900<br />species: Adelie","flipper_length_mm: 191<br />body_mass_g: 3700<br />species: Adelie","flipper_length_mm: 186<br />body_mass_g: 3550<br />species: Adelie","flipper_length_mm: 193<br />body_mass_g: 3800<br />species: Adelie","flipper_length_mm: 181<br />body_mass_g: 2850<br />species: Adelie","flipper_length_mm: 194<br />body_mass_g: 3750<br />species: Adelie","flipper_length_mm: 185<br />body_mass_g: 3150<br />species: Adelie","flipper_length_mm: 195<br />body_mass_g: 4400<br />species: Adelie","flipper_length_mm: 185<br />body_mass_g: 3600<br />species: Adelie","flipper_length_mm: 192<br />body_mass_g: 4050<br />species: Adelie","flipper_length_mm: 184<br />body_mass_g: 2850<br />species: Adelie","flipper_length_mm: 192<br />body_mass_g: 3950<br />species: Adelie","flipper_length_mm: 195<br />body_mass_g: 3350<br />species: Adelie","flipper_length_mm: 188<br />body_mass_g: 4100<br />species: Adelie","flipper_length_mm: 190<br />body_mass_g: 3050<br />species: Adelie","flipper_length_mm: 198<br />body_mass_g: 4450<br />species: Adelie","flipper_length_mm: 190<br />body_mass_g: 3600<br />species: Adelie","flipper_length_mm: 190<br />body_mass_g: 3900<br />species: Adelie","flipper_length_mm: 196<br />body_mass_g: 3550<br />species: Adelie","flipper_length_mm: 197<br />body_mass_g: 4150<br />species: Adelie","flipper_length_mm: 190<br />body_mass_g: 3700<br />species: Adelie","flipper_length_mm: 195<br />body_mass_g: 4250<br />species: Adelie","flipper_length_mm: 191<br />body_mass_g: 3700<br />species: Adelie","flipper_length_mm: 184<br />body_mass_g: 3900<br />species: Adelie","flipper_length_mm: 187<br />body_mass_g: 3550<br />species: Adelie","flipper_length_mm: 195<br />body_mass_g: 4000<br />species: Adelie","flipper_length_mm: 189<br />body_mass_g: 3200<br />species: Adelie","flipper_length_mm: 196<br />body_mass_g: 4700<br />species: Adelie","flipper_length_mm: 187<br />body_mass_g: 3800<br />species: Adelie","flipper_length_mm: 193<br />body_mass_g: 4200<br />species: Adelie","flipper_length_mm: 191<br />body_mass_g: 3350<br />species: Adelie","flipper_length_mm: 194<br />body_mass_g: 3550<br />species: Adelie","flipper_length_mm: 190<br />body_mass_g: 3800<br />species: Adelie","flipper_length_mm: 189<br />body_mass_g: 3500<br />species: Adelie","flipper_length_mm: 189<br />body_mass_g: 3950<br />species: Adelie","flipper_length_mm: 190<br />body_mass_g: 3600<br />species: Adelie","flipper_length_mm: 202<br />body_mass_g: 3550<br />species: Adelie","flipper_length_mm: 205<br />body_mass_g: 4300<br />species: Adelie","flipper_length_mm: 185<br />body_mass_g: 3400<br />species: Adelie","flipper_length_mm: 186<br />body_mass_g: 4450<br />species: Adelie","flipper_length_mm: 187<br />body_mass_g: 3300<br />species: Adelie","flipper_length_mm: 208<br />body_mass_g: 4300<br />species: Adelie","flipper_length_mm: 190<br />body_mass_g: 3700<br />species: Adelie","flipper_length_mm: 196<br />body_mass_g: 4350<br />species: Adelie","flipper_length_mm: 178<br />body_mass_g: 2900<br />species: Adelie","flipper_length_mm: 192<br />body_mass_g: 4100<br />species: Adelie","flipper_length_mm: 192<br />body_mass_g: 3725<br />species: Adelie","flipper_length_mm: 203<br />body_mass_g: 4725<br />species: Adelie","flipper_length_mm: 183<br />body_mass_g: 3075<br />species: Adelie","flipper_length_mm: 190<br />body_mass_g: 4250<br />species: Adelie","flipper_length_mm: 193<br />body_mass_g: 2925<br />species: Adelie","flipper_length_mm: 184<br />body_mass_g: 3550<br />species: Adelie","flipper_length_mm: 199<br />body_mass_g: 3750<br />species: Adelie","flipper_length_mm: 190<br />body_mass_g: 3900<br />species: Adelie","flipper_length_mm: 181<br />body_mass_g: 3175<br />species: Adelie","flipper_length_mm: 197<br />body_mass_g: 4775<br />species: Adelie","flipper_length_mm: 198<br />body_mass_g: 3825<br />species: Adelie","flipper_length_mm: 191<br />body_mass_g: 4600<br />species: Adelie","flipper_length_mm: 193<br />body_mass_g: 3200<br />species: Adelie","flipper_length_mm: 197<br />body_mass_g: 4275<br />species: Adelie","flipper_length_mm: 191<br />body_mass_g: 3900<br />species: Adelie","flipper_length_mm: 196<br />body_mass_g: 4075<br />species: Adelie","flipper_length_mm: 188<br />body_mass_g: 2900<br />species: Adelie","flipper_length_mm: 199<br />body_mass_g: 3775<br />species: Adelie","flipper_length_mm: 189<br />body_mass_g: 3350<br />species: Adelie","flipper_length_mm: 189<br />body_mass_g: 3325<br />species: Adelie","flipper_length_mm: 187<br />body_mass_g: 3150<br />species: Adelie","flipper_length_mm: 198<br />body_mass_g: 3500<br />species: Adelie","flipper_length_mm: 176<br />body_mass_g: 3450<br />species: Adelie","flipper_length_mm: 202<br />body_mass_g: 3875<br />species: Adelie","flipper_length_mm: 186<br />body_mass_g: 3050<br />species: Adelie","flipper_length_mm: 199<br />body_mass_g: 4000<br />species: Adelie","flipper_length_mm: 191<br />body_mass_g: 3275<br />species: Adelie","flipper_length_mm: 195<br />body_mass_g: 4300<br />species: Adelie","flipper_length_mm: 191<br />body_mass_g: 3050<br />species: Adelie","flipper_length_mm: 210<br />body_mass_g: 4000<br />species: Adelie","flipper_length_mm: 190<br />body_mass_g: 3325<br />species: Adelie","flipper_length_mm: 197<br />body_mass_g: 3500<br />species: Adelie","flipper_length_mm: 193<br />body_mass_g: 3500<br />species: Adelie","flipper_length_mm: 199<br />body_mass_g: 4475<br />species: Adelie","flipper_length_mm: 187<br />body_mass_g: 3425<br />species: Adelie","flipper_length_mm: 190<br />body_mass_g: 3900<br />species: Adelie","flipper_length_mm: 191<br />body_mass_g: 3175<br />species: Adelie","flipper_length_mm: 200<br />body_mass_g: 3975<br />species: Adelie","flipper_length_mm: 185<br />body_mass_g: 3400<br />species: Adelie","flipper_length_mm: 193<br />body_mass_g: 4250<br />species: Adelie","flipper_length_mm: 193<br />body_mass_g: 3400<br />species: Adelie","flipper_length_mm: 187<br />body_mass_g: 3475<br />species: Adelie","flipper_length_mm: 188<br />body_mass_g: 3050<br />species: Adelie","flipper_length_mm: 190<br />body_mass_g: 3725<br />species: Adelie","flipper_length_mm: 192<br />body_mass_g: 3000<br />species: Adelie","flipper_length_mm: 185<br />body_mass_g: 3650<br />species: Adelie","flipper_length_mm: 190<br />body_mass_g: 4250<br />species: Adelie","flipper_length_mm: 184<br />body_mass_g: 3475<br />species: Adelie","flipper_length_mm: 195<br />body_mass_g: 3450<br />species: Adelie","flipper_length_mm: 193<br />body_mass_g: 3750<br />species: Adelie","flipper_length_mm: 187<br />body_mass_g: 3700<br />species: Adelie","flipper_length_mm: 201<br />body_mass_g: 4000<br />species: Adelie"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(248,118,109,1)"}},"hoveron":"points","name":"Adelie","legendgroup":"Adelie","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[192,196,193,188,197,198,178,197,195,198,193,194,185,201,190,201,197,181,190,195,181,191,187,193,195,197,200,200,191,205,187,201,187,203,195,199,195,210,192,205,210,187,196,196,196,201,190,212,187,198,199,201,193,203,187,197,191,203,202,194,206,189,195,207,202,193,210,198],"y":[3500,3900,3650,3525,3725,3950,3250,3750,4150,3700,3800,3775,3700,4050,3575,4050,3300,3700,3450,4400,3600,3400,2900,3800,3300,4150,3400,3800,3700,4550,3200,4300,3350,4100,3600,3900,3850,4800,2700,4500,3950,3650,3550,3500,3675,4450,3400,4300,3250,3675,3325,3950,3600,4050,3350,3450,3250,4050,3800,3525,3950,3650,3650,4000,3400,3775,4100,3775],"text":["flipper_length_mm: 192<br />body_mass_g: 3500<br />species: Chinstrap","flipper_length_mm: 196<br />body_mass_g: 3900<br />species: Chinstrap","flipper_length_mm: 193<br />body_mass_g: 3650<br />species: Chinstrap","flipper_length_mm: 188<br />body_mass_g: 3525<br />species: Chinstrap","flipper_length_mm: 197<br />body_mass_g: 3725<br />species: Chinstrap","flipper_length_mm: 198<br />body_mass_g: 3950<br />species: Chinstrap","flipper_length_mm: 178<br />body_mass_g: 3250<br />species: Chinstrap","flipper_length_mm: 197<br />body_mass_g: 3750<br />species: Chinstrap","flipper_length_mm: 195<br />body_mass_g: 4150<br />species: Chinstrap","flipper_length_mm: 198<br />body_mass_g: 3700<br />species: Chinstrap","flipper_length_mm: 193<br />body_mass_g: 3800<br />species: Chinstrap","flipper_length_mm: 194<br />body_mass_g: 3775<br />species: Chinstrap","flipper_length_mm: 185<br />body_mass_g: 3700<br />species: Chinstrap","flipper_length_mm: 201<br />body_mass_g: 4050<br />species: Chinstrap","flipper_length_mm: 190<br />body_mass_g: 3575<br />species: Chinstrap","flipper_length_mm: 201<br />body_mass_g: 4050<br />species: Chinstrap","flipper_length_mm: 197<br />body_mass_g: 3300<br />species: Chinstrap","flipper_length_mm: 181<br />body_mass_g: 3700<br />species: Chinstrap","flipper_length_mm: 190<br />body_mass_g: 3450<br />species: Chinstrap","flipper_length_mm: 195<br />body_mass_g: 4400<br />species: Chinstrap","flipper_length_mm: 181<br />body_mass_g: 3600<br />species: Chinstrap","flipper_length_mm: 191<br />body_mass_g: 3400<br />species: Chinstrap","flipper_length_mm: 187<br />body_mass_g: 2900<br />species: Chinstrap","flipper_length_mm: 193<br />body_mass_g: 3800<br />species: Chinstrap","flipper_length_mm: 195<br />body_mass_g: 3300<br />species: Chinstrap","flipper_length_mm: 197<br />body_mass_g: 4150<br />species: Chinstrap","flipper_length_mm: 200<br />body_mass_g: 3400<br />species: Chinstrap","flipper_length_mm: 200<br />body_mass_g: 3800<br />species: Chinstrap","flipper_length_mm: 191<br />body_mass_g: 3700<br />species: Chinstrap","flipper_length_mm: 205<br />body_mass_g: 4550<br />species: Chinstrap","flipper_length_mm: 187<br />body_mass_g: 3200<br />species: Chinstrap","flipper_length_mm: 201<br />body_mass_g: 4300<br />species: Chinstrap","flipper_length_mm: 187<br />body_mass_g: 3350<br />species: Chinstrap","flipper_length_mm: 203<br />body_mass_g: 4100<br />species: Chinstrap","flipper_length_mm: 195<br />body_mass_g: 3600<br />species: Chinstrap","flipper_length_mm: 199<br />body_mass_g: 3900<br />species: Chinstrap","flipper_length_mm: 195<br />body_mass_g: 3850<br />species: Chinstrap","flipper_length_mm: 210<br />body_mass_g: 4800<br />species: Chinstrap","flipper_length_mm: 192<br />body_mass_g: 2700<br />species: Chinstrap","flipper_length_mm: 205<br />body_mass_g: 4500<br />species: Chinstrap","flipper_length_mm: 210<br />body_mass_g: 3950<br />species: Chinstrap","flipper_length_mm: 187<br />body_mass_g: 3650<br />species: Chinstrap","flipper_length_mm: 196<br />body_mass_g: 3550<br />species: Chinstrap","flipper_length_mm: 196<br />body_mass_g: 3500<br />species: Chinstrap","flipper_length_mm: 196<br />body_mass_g: 3675<br />species: Chinstrap","flipper_length_mm: 201<br />body_mass_g: 4450<br />species: Chinstrap","flipper_length_mm: 190<br />body_mass_g: 3400<br />species: Chinstrap","flipper_length_mm: 212<br />body_mass_g: 4300<br />species: Chinstrap","flipper_length_mm: 187<br />body_mass_g: 3250<br />species: Chinstrap","flipper_length_mm: 198<br />body_mass_g: 3675<br />species: Chinstrap","flipper_length_mm: 199<br />body_mass_g: 3325<br />species: Chinstrap","flipper_length_mm: 201<br />body_mass_g: 3950<br />species: Chinstrap","flipper_length_mm: 193<br />body_mass_g: 3600<br />species: Chinstrap","flipper_length_mm: 203<br />body_mass_g: 4050<br />species: Chinstrap","flipper_length_mm: 187<br />body_mass_g: 3350<br />species: Chinstrap","flipper_length_mm: 197<br />body_mass_g: 3450<br />species: Chinstrap","flipper_length_mm: 191<br />body_mass_g: 3250<br />species: Chinstrap","flipper_length_mm: 203<br />body_mass_g: 4050<br />species: Chinstrap","flipper_length_mm: 202<br />body_mass_g: 3800<br />species: Chinstrap","flipper_length_mm: 194<br />body_mass_g: 3525<br />species: Chinstrap","flipper_length_mm: 206<br />body_mass_g: 3950<br />species: Chinstrap","flipper_length_mm: 189<br />body_mass_g: 3650<br />species: Chinstrap","flipper_length_mm: 195<br />body_mass_g: 3650<br />species: Chinstrap","flipper_length_mm: 207<br />body_mass_g: 4000<br />species: Chinstrap","flipper_length_mm: 202<br />body_mass_g: 3400<br />species: Chinstrap","flipper_length_mm: 193<br />body_mass_g: 3775<br />species: Chinstrap","flipper_length_mm: 210<br />body_mass_g: 4100<br />species: Chinstrap","flipper_length_mm: 198<br />body_mass_g: 3775<br />species: Chinstrap"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,186,56,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,186,56,1)"}},"hoveron":"points","name":"Chinstrap","legendgroup":"Chinstrap","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[211,230,210,218,215,210,211,219,209,215,214,216,214,213,210,217,210,221,209,222,218,215,213,215,215,215,216,215,210,220,222,209,207,230,220,220,213,219,208,208,208,225,210,216,222,217,210,225,213,215,210,220,210,225,217,220,208,220,208,224,208,221,214,231,219,230,214,229,220,223,216,221,221,217,216,230,209,220,215,223,212,221,212,224,212,228,218,218,212,230,218,228,212,224,214,226,216,222,203,225,219,228,215,228,216,215,210,219,208,209,216,229,213,230,217,230,217,222,214,null,215,222,212,213],"y":[4500,5700,4450,5700,5400,4550,4800,5200,4400,5150,4650,5550,4650,5850,4200,5850,4150,6300,4800,5350,5700,5000,4400,5050,5000,5100,4100,5650,4600,5550,5250,4700,5050,6050,5150,5400,4950,5250,4350,5350,3950,5700,4300,4750,5550,4900,4200,5400,5100,5300,4850,5300,4400,5000,4900,5050,4300,5000,4450,5550,4200,5300,4400,5650,4700,5700,4650,5800,4700,5550,4750,5000,5100,5200,4700,5800,4600,6000,4750,5950,4625,5450,4725,5350,4750,5600,4600,5300,4875,5550,4950,5400,4750,5650,4850,5200,4925,4875,4625,5250,4850,5600,4975,5500,4725,5500,4700,5500,4575,5500,5000,5950,4650,5500,4375,5850,4875,6000,4925,null,4850,5750,5200,5400],"text":["flipper_length_mm: 211<br />body_mass_g: 4500<br />species: Gentoo","flipper_length_mm: 230<br />body_mass_g: 5700<br />species: Gentoo","flipper_length_mm: 210<br />body_mass_g: 4450<br />species: Gentoo","flipper_length_mm: 218<br />body_mass_g: 5700<br />species: Gentoo","flipper_length_mm: 215<br />body_mass_g: 5400<br />species: Gentoo","flipper_length_mm: 210<br />body_mass_g: 4550<br />species: Gentoo","flipper_length_mm: 211<br />body_mass_g: 4800<br />species: Gentoo","flipper_length_mm: 219<br />body_mass_g: 5200<br />species: Gentoo","flipper_length_mm: 209<br />body_mass_g: 4400<br />species: Gentoo","flipper_length_mm: 215<br />body_mass_g: 5150<br />species: Gentoo","flipper_length_mm: 214<br />body_mass_g: 4650<br />species: Gentoo","flipper_length_mm: 216<br />body_mass_g: 5550<br />species: Gentoo","flipper_length_mm: 214<br />body_mass_g: 4650<br />species: Gentoo","flipper_length_mm: 213<br />body_mass_g: 5850<br />species: Gentoo","flipper_length_mm: 210<br />body_mass_g: 4200<br />species: Gentoo","flipper_length_mm: 217<br />body_mass_g: 5850<br />species: Gentoo","flipper_length_mm: 210<br />body_mass_g: 4150<br />species: Gentoo","flipper_length_mm: 221<br />body_mass_g: 6300<br />species: Gentoo","flipper_length_mm: 209<br />body_mass_g: 4800<br />species: Gentoo","flipper_length_mm: 222<br />body_mass_g: 5350<br />species: Gentoo","flipper_length_mm: 218<br />body_mass_g: 5700<br />species: Gentoo","flipper_length_mm: 215<br />body_mass_g: 5000<br />species: Gentoo","flipper_length_mm: 213<br />body_mass_g: 4400<br />species: Gentoo","flipper_length_mm: 215<br />body_mass_g: 5050<br />species: Gentoo","flipper_length_mm: 215<br />body_mass_g: 5000<br />species: Gentoo","flipper_length_mm: 215<br />body_mass_g: 5100<br />species: Gentoo","flipper_length_mm: 216<br />body_mass_g: 4100<br />species: Gentoo","flipper_length_mm: 215<br />body_mass_g: 5650<br />species: Gentoo","flipper_length_mm: 210<br />body_mass_g: 4600<br />species: Gentoo","flipper_length_mm: 220<br />body_mass_g: 5550<br />species: Gentoo","flipper_length_mm: 222<br />body_mass_g: 5250<br />species: Gentoo","flipper_length_mm: 209<br />body_mass_g: 4700<br />species: Gentoo","flipper_length_mm: 207<br />body_mass_g: 5050<br />species: Gentoo","flipper_length_mm: 230<br />body_mass_g: 6050<br />species: Gentoo","flipper_length_mm: 220<br />body_mass_g: 5150<br />species: Gentoo","flipper_length_mm: 220<br />body_mass_g: 5400<br />species: Gentoo","flipper_length_mm: 213<br />body_mass_g: 4950<br />species: Gentoo","flipper_length_mm: 219<br />body_mass_g: 5250<br />species: Gentoo","flipper_length_mm: 208<br />body_mass_g: 4350<br />species: Gentoo","flipper_length_mm: 208<br />body_mass_g: 5350<br />species: Gentoo","flipper_length_mm: 208<br />body_mass_g: 3950<br />species: Gentoo","flipper_length_mm: 225<br />body_mass_g: 5700<br />species: Gentoo","flipper_length_mm: 210<br />body_mass_g: 4300<br />species: Gentoo","flipper_length_mm: 216<br />body_mass_g: 4750<br />species: Gentoo","flipper_length_mm: 222<br />body_mass_g: 5550<br />species: Gentoo","flipper_length_mm: 217<br />body_mass_g: 4900<br />species: Gentoo","flipper_length_mm: 210<br />body_mass_g: 4200<br />species: Gentoo","flipper_length_mm: 225<br />body_mass_g: 5400<br />species: Gentoo","flipper_length_mm: 213<br />body_mass_g: 5100<br />species: Gentoo","flipper_length_mm: 215<br />body_mass_g: 5300<br />species: Gentoo","flipper_length_mm: 210<br />body_mass_g: 4850<br />species: Gentoo","flipper_length_mm: 220<br />body_mass_g: 5300<br />species: Gentoo","flipper_length_mm: 210<br />body_mass_g: 4400<br />species: Gentoo","flipper_length_mm: 225<br />body_mass_g: 5000<br />species: Gentoo","flipper_length_mm: 217<br />body_mass_g: 4900<br />species: Gentoo","flipper_length_mm: 220<br />body_mass_g: 5050<br />species: Gentoo","flipper_length_mm: 208<br />body_mass_g: 4300<br />species: Gentoo","flipper_length_mm: 220<br />body_mass_g: 5000<br />species: Gentoo","flipper_length_mm: 208<br />body_mass_g: 4450<br />species: Gentoo","flipper_length_mm: 224<br />body_mass_g: 5550<br />species: Gentoo","flipper_length_mm: 208<br />body_mass_g: 4200<br />species: Gentoo","flipper_length_mm: 221<br />body_mass_g: 5300<br />species: Gentoo","flipper_length_mm: 214<br />body_mass_g: 4400<br />species: Gentoo","flipper_length_mm: 231<br />body_mass_g: 5650<br />species: Gentoo","flipper_length_mm: 219<br />body_mass_g: 4700<br />species: Gentoo","flipper_length_mm: 230<br />body_mass_g: 5700<br />species: Gentoo","flipper_length_mm: 214<br />body_mass_g: 4650<br />species: Gentoo","flipper_length_mm: 229<br />body_mass_g: 5800<br />species: Gentoo","flipper_length_mm: 220<br />body_mass_g: 4700<br />species: Gentoo","flipper_length_mm: 223<br />body_mass_g: 5550<br />species: Gentoo","flipper_length_mm: 216<br />body_mass_g: 4750<br />species: Gentoo","flipper_length_mm: 221<br />body_mass_g: 5000<br />species: Gentoo","flipper_length_mm: 221<br />body_mass_g: 5100<br />species: Gentoo","flipper_length_mm: 217<br />body_mass_g: 5200<br />species: Gentoo","flipper_length_mm: 216<br />body_mass_g: 4700<br />species: Gentoo","flipper_length_mm: 230<br />body_mass_g: 5800<br />species: Gentoo","flipper_length_mm: 209<br />body_mass_g: 4600<br />species: Gentoo","flipper_length_mm: 220<br />body_mass_g: 6000<br />species: Gentoo","flipper_length_mm: 215<br />body_mass_g: 4750<br />species: Gentoo","flipper_length_mm: 223<br />body_mass_g: 5950<br />species: Gentoo","flipper_length_mm: 212<br />body_mass_g: 4625<br />species: Gentoo","flipper_length_mm: 221<br />body_mass_g: 5450<br />species: Gentoo","flipper_length_mm: 212<br />body_mass_g: 4725<br />species: Gentoo","flipper_length_mm: 224<br />body_mass_g: 5350<br />species: Gentoo","flipper_length_mm: 212<br />body_mass_g: 4750<br />species: Gentoo","flipper_length_mm: 228<br />body_mass_g: 5600<br />species: Gentoo","flipper_length_mm: 218<br />body_mass_g: 4600<br />species: Gentoo","flipper_length_mm: 218<br />body_mass_g: 5300<br />species: Gentoo","flipper_length_mm: 212<br />body_mass_g: 4875<br />species: Gentoo","flipper_length_mm: 230<br />body_mass_g: 5550<br />species: Gentoo","flipper_length_mm: 218<br />body_mass_g: 4950<br />species: Gentoo","flipper_length_mm: 228<br />body_mass_g: 5400<br />species: Gentoo","flipper_length_mm: 212<br />body_mass_g: 4750<br />species: Gentoo","flipper_length_mm: 224<br />body_mass_g: 5650<br />species: Gentoo","flipper_length_mm: 214<br />body_mass_g: 4850<br />species: Gentoo","flipper_length_mm: 226<br />body_mass_g: 5200<br />species: Gentoo","flipper_length_mm: 216<br />body_mass_g: 4925<br />species: Gentoo","flipper_length_mm: 222<br />body_mass_g: 4875<br />species: Gentoo","flipper_length_mm: 203<br />body_mass_g: 4625<br />species: Gentoo","flipper_length_mm: 225<br />body_mass_g: 5250<br />species: Gentoo","flipper_length_mm: 219<br />body_mass_g: 4850<br />species: Gentoo","flipper_length_mm: 228<br />body_mass_g: 5600<br />species: Gentoo","flipper_length_mm: 215<br />body_mass_g: 4975<br />species: Gentoo","flipper_length_mm: 228<br />body_mass_g: 5500<br />species: Gentoo","flipper_length_mm: 216<br />body_mass_g: 4725<br />species: Gentoo","flipper_length_mm: 215<br />body_mass_g: 5500<br />species: Gentoo","flipper_length_mm: 210<br />body_mass_g: 4700<br />species: Gentoo","flipper_length_mm: 219<br />body_mass_g: 5500<br />species: Gentoo","flipper_length_mm: 208<br />body_mass_g: 4575<br />species: Gentoo","flipper_length_mm: 209<br />body_mass_g: 5500<br />species: Gentoo","flipper_length_mm: 216<br />body_mass_g: 5000<br />species: Gentoo","flipper_length_mm: 229<br />body_mass_g: 5950<br />species: Gentoo","flipper_length_mm: 213<br />body_mass_g: 4650<br />species: Gentoo","flipper_length_mm: 230<br />body_mass_g: 5500<br />species: Gentoo","flipper_length_mm: 217<br />body_mass_g: 4375<br />species: Gentoo","flipper_length_mm: 230<br />body_mass_g: 5850<br />species: Gentoo","flipper_length_mm: 217<br />body_mass_g: 4875<br />species: Gentoo","flipper_length_mm: 222<br />body_mass_g: 6000<br />species: Gentoo","flipper_length_mm: 214<br />body_mass_g: 4925<br />species: Gentoo","flipper_length_mm:  NA<br />body_mass_g:   NA<br />species: Gentoo","flipper_length_mm: 215<br />body_mass_g: 4850<br />species: Gentoo","flipper_length_mm: 222<br />body_mass_g: 5750<br />species: Gentoo","flipper_length_mm: 212<br />body_mass_g: 5200<br />species: Gentoo","flipper_length_mm: 213<br />body_mass_g: 5400<br />species: Gentoo"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(97,156,255,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(97,156,255,1)"}},"hoveron":"points","name":"Gentoo","legendgroup":"Gentoo","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":40.840182648401829,"r":7.3059360730593621,"b":37.260273972602747,"l":48.949771689497723},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"Flipper Length per Species","font":{"color":"rgba(0,0,0,1)","family":"","size":17.534246575342465},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[169.05000000000001,233.94999999999999],"tickmode":"array","ticktext":["170","180","190","200","210","220","230"],"tickvals":[170,180,190,200,210,220,230],"categoryorder":"array","categoryarray":["170","180","190","200","210","220","230"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"Flipper Length (mm)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[2520,6480],"tickmode":"array","ticktext":["3000","4000","5000","6000"],"tickvals":[3000,4000,5000,6000],"categoryorder":"array","categoryarray":["3000","4000","5000","6000"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"Body Mass (g)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"rgba(255,255,255,1)","line":{"color":"rgba(51,51,51,1)","width":0,"linetype":"solid"},"yref":"paper","xref":"paper","layer":"below","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"Species","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"1f832bf46336":{"x":{},"y":{},"colour":{},"type":"scatter"}},"cur_data":"1f832bf46336","visdat":{"1f832bf46336":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div></div></div><bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">species</th>
+<th style="text-align: left;">island</th>
+<th style="text-align: right;">flipper_length_mm</th>
+<th style="text-align: left;">sex</th>
+<th style="text-align: right;">year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">181</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">186</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">193</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">181</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">193</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">186</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">182</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">191</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">198</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">185</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">197</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">184</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">194</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">174</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">189</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">185</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">187</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">183</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">187</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">172</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">178</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">178</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">188</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">184</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">196</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">181</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">184</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">182</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">186</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">196</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">185</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">182</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">179</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">191</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">186</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">188</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">187</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">191</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">186</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">193</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">181</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">194</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">185</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">185</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">192</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">184</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">192</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">188</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">198</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">196</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">197</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">191</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">184</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">187</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">189</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">196</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">187</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">193</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">191</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">194</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">189</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">189</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">202</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">205</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">185</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">186</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">187</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">208</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">196</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">178</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">192</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">192</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">203</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">183</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">193</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">184</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">199</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">181</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">197</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">198</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">191</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">193</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">197</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">191</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">196</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">188</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">199</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">189</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">189</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">187</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">198</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">176</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">202</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">186</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">199</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">191</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">191</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">210</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">197</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">193</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">199</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">187</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">191</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">185</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">193</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">193</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">187</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">188</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">192</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">185</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">184</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">193</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">187</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">201</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">211</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">230</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">210</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">218</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">215</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">210</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">211</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">219</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">209</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">215</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">214</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">216</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">214</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">213</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">210</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">217</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">210</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">221</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">209</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">222</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">218</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">215</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">213</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">215</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">215</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">215</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">216</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">215</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">210</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">220</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">222</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">209</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">207</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">230</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">220</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">220</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">213</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">219</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">208</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">208</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">208</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">225</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">210</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">216</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">222</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">217</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">210</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">225</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">213</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">215</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">210</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">220</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">210</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">225</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">217</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">220</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">208</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">220</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">208</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">224</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">208</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">221</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">214</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">231</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">219</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">230</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">214</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">229</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">220</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">223</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">216</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">221</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">221</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">217</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">216</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">230</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">209</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">220</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">215</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">223</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">212</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">221</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">212</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">224</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">212</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">228</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">218</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">218</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">212</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">230</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">218</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">228</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">212</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">224</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">214</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">226</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">216</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">222</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">203</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">225</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">219</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">228</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">215</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">228</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">216</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">215</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">210</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">219</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">208</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">209</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">216</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">229</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">213</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">230</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">217</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">230</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">217</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">222</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">214</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">215</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">222</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">212</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">213</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">192</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">196</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">193</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">188</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">197</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">198</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">178</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">197</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">198</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">193</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">194</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">185</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">201</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">201</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">197</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">181</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">181</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">191</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">187</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">193</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">197</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">191</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">205</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">187</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">201</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">187</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">203</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">199</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">210</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">192</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">205</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">210</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">187</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">196</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">196</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">196</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">201</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">212</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">187</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">198</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">199</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">201</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">193</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">203</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">187</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">197</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">191</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">203</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">202</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">194</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">206</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">189</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">207</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">202</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">193</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">210</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">198</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">2009</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+</div>
+<div id="data-summary" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-data-summary">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<table class="caption-top table table-sm table-striped small">
+<caption>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">penguins</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">344</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">factor</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<strong>Variable type: factor</strong>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 12%">
+<col style="width: 16%">
+<col style="width: 9%">
+<col style="width: 10%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: left;">ordered</th>
+<th style="text-align: right;">n_unique</th>
+<th style="text-align: left;">top_counts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">species</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Ade: 152, Gen: 124, Chi: 68</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">island</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Bis: 168, Dre: 124, Tor: 52</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">sex</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0.97</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">mal: 168, fem: 165</td>
+</tr>
+</tbody>
+</table>
+<strong>Variable type: numeric</strong>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 9%">
+<col style="width: 13%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">bill_length_mm</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.99</td>
+<td style="text-align: right;">43.92</td>
+<td style="text-align: right;">5.46</td>
+<td style="text-align: right;">32.1</td>
+<td style="text-align: right;">39.23</td>
+<td style="text-align: right;">44.45</td>
+<td style="text-align: right;">48.5</td>
+<td style="text-align: right;">59.6</td>
+<td style="text-align: left;">▃▇▇▆▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">bill_depth_mm</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.99</td>
+<td style="text-align: right;">17.15</td>
+<td style="text-align: right;">1.97</td>
+<td style="text-align: right;">13.1</td>
+<td style="text-align: right;">15.60</td>
+<td style="text-align: right;">17.30</td>
+<td style="text-align: right;">18.7</td>
+<td style="text-align: right;">21.5</td>
+<td style="text-align: left;">▅▅▇▇▂</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">flipper_length_mm</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.99</td>
+<td style="text-align: right;">200.92</td>
+<td style="text-align: right;">14.06</td>
+<td style="text-align: right;">172.0</td>
+<td style="text-align: right;">190.00</td>
+<td style="text-align: right;">197.00</td>
+<td style="text-align: right;">213.0</td>
+<td style="text-align: right;">231.0</td>
+<td style="text-align: left;">▂▇▃▅▂</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">body_mass_g</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.99</td>
+<td style="text-align: right;">4201.75</td>
+<td style="text-align: right;">801.95</td>
+<td style="text-align: right;">2700.0</td>
+<td style="text-align: right;">3550.00</td>
+<td style="text-align: right;">4050.00</td>
+<td style="text-align: right;">4750.0</td>
+<td style="text-align: right;">6300.0</td>
+<td style="text-align: left;">▃▇▆▃▂</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">year</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">2008.03</td>
+<td style="text-align: right;">0.82</td>
+<td style="text-align: right;">2007.0</td>
+<td style="text-align: right;">2007.00</td>
+<td style="text-align: right;">2008.00</td>
+<td style="text-align: right;">2009.0</td>
+<td style="text-align: right;">2009.0</td>
+<td style="text-align: left;">▇▁▇▁▇</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+
+
+<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+</div>
+
+
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (_event) {
+  if (window.bslib.Card) {
+    window.bslib.Card.initializeAllCards();
+  }
+}); 
+</script>
+  
+
+
+
+</body></html>
