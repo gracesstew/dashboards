@@ -6,13 +6,13 @@ website:
   title: "dashboards"
   navbar:
     left:
-      - icon: bookmark-heart-fill
-        href: "https://gracesstew.github.io"
-        target: blank
       - href: index.qmd
         text: Starwars
       - href: penguins.qmd
         text: Penguins
+      - icon: bookmark-heart-fill
+        href: https://gracesstew.github.io
+        target: blank
 
 format:
   html:
