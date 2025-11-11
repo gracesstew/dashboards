@@ -6,9 +6,12 @@ website:
   title: "dashboards"
   navbar:
     left:
+      - icon: bookmark-heart-fill
+        href: gracesstew.github.io
       - href: index.qmd
         text: Starwars
-      - penguins.qmd
+      - href: penguins.qmd
+        text: Penguins
 
 format:
   html:
