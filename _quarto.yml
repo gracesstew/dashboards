@@ -7,7 +7,7 @@ website:
   navbar:
     left:
       - icon: bookmark-heart-fill
-        href: gracesstew.github.io
+        href: "https://gracesstew.github.io"
         target: blank
       - href: index.qmd
         text: Starwars
