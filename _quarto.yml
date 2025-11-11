@@ -8,6 +8,7 @@ website:
     left:
       - icon: bookmark-heart-fill
         href: gracesstew.github.io
+        target: blank
       - href: index.qmd
         text: Starwars
       - href: penguins.qmd
