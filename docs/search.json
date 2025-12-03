@@ -12,5 +12,26 @@
     "title": "About",
     "section": "",
     "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "FINAL.html",
+    "href": "FINAL.html",
+    "title": "Tourism vs. Water Quality on Oahu",
+    "section": "",
+    "text": "print(\"hi\")\n\n[1] \"hi\""
+  },
+  {
+    "objectID": "FINAL.html#row1",
+    "href": "FINAL.html#row1",
+    "title": "Tourism vs. Water Quality on Oahu",
+    "section": "",
+    "text": "print(\"hi\")\n\n[1] \"hi\""
+  },
+  {
+    "objectID": "FINAL.html#row2",
+    "href": "FINAL.html#row2",
+    "title": "Tourism vs. Water Quality on Oahu",
+    "section": "row2",
+    "text": "row2\n\nprint(\"hi\")\n\n[1] \"hi\""
   }
 ]

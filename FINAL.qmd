@@ -1,0 +1,141 @@
+---
+title: "Tourism vs. Water Quality on Oahu"
+author: "Grace Stewart | CS201"
+format: 
+  dashboard:
+    orientation: columns
+---
+
+# About
+
+## column1
+
+:::: {style="text-align:center; color: #2C3E50"}
+<h2>Tourism Vs. Water Quality on Oahu 𓆝 ⋆.</h2>
+:::
+::: {style="text-align:left; color: #2C3E50"}
+<p>This dashboard aims to visualize the relationship between the number of
+monthly visitors in Hawai‘i from 2018–2025 and various water quality indicators.
+The water quality variables examined are:</p>
+
+<ul>
+  <li>Water Temperature (°F)</li>
+  <li>Salinity (PSU)</li>
+  <li>Turbidity (NTU)</li>
+  <li>Chlorophyll (µg/L)</li>
+  <li>Enterococcus (mpn/100mL)</li>
+</ul>
+
+<p>Author: Grace Stewart</p>
+:::
+
+## column2
+
+![](media/DSC01453.JPG)
+
+# Analysis
+
+```{r}
+library(tidyverse)
+library(plotly)
+library(skimr)
+
+data <- read.csv("data/all_tourist.csv")%>% 
+  drop_na()
+
+data$Date <- as.Date(paste0(data$year_month, "-01"))
+
+data$Visitors <- as.numeric(gsub(",", "", data$Visitors))
+```
+
+```{r}
+#| echo: false
+#| title: Total Visitors
+
+p1 <- ggplot(data, aes(x = Date, y = Visitors)) +
+  geom_col(fill = "skyblue") +
+  scale_y_continuous(labels = scales::comma) +
+  scale_x_date(
+    date_breaks = "4 months",
+    date_labels = "%Y-%m"
+  ) +
+  labs(
+    title = "Visitors per Month on Oahu",
+    x = "Month",
+    y = "Visitors"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1, size = 8))
+
+ggplotly(p1)
+```
+
+## row2
+
+```{r}
+#| echo: false
+#| title: Chlorophyll vs. Turbidity
+
+p2 <- ggplot(data, aes(x = Chlorophyll..ug.L., y = Turbidity..NTU.)) +
+  geom_point(alpha = 0.5, size = 1, color = "darkgreen") +
+  geom_smooth(method = "lm", se = FALSE, color = "lightblue") +
+  labs(
+    title = "Chlorophyll Vs. Turbidity",
+    x = "Chlorophyll (ug/L)",
+    y = "Turbidity (NTU)"
+  ) +
+  theme_minimal()
+
+ggplotly(p2)
+```
+
+```{r}
+#| echo: false
+#| title: Visitors vs. Enterococcus
+
+data_sorted <- data[order(data$Visitors), ]
+
+p3 <- ggplot(data_sorted, aes(x = Visitors, y = Enterococcus..mpn.100mL.)) +
+  geom_line(color = "darkred", linewidth = 0.5) +
+  scale_x_continuous(labels = scales::comma) +
+  scale_y_continuous(labels = scales::comma) +
+  labs(
+    title = "Visitors vs. Enterococcus Levels",
+    x = "Visitors",
+    y = "Enterococcus (mpn/100mL)"
+  ) +
+  theme_minimal()
+
+
+ggplotly(p3)
+
+```
+
+# Work Cited
+
+::: {style="text-align:center; color: #2C3E50"}
+<h2>𓆝 𓆟 𓆞Works Cited𓆝 𓆟 𓆞</h2>
+::: {style="text-align:left; color: #2C3E50"}
+<ul>
+  <li>
+    Pacific Islands Ocean Observing System. (n.d.). 
+    <em>Hawaiʻi Yacht Club nearshore sensor observations</em>. 
+    <a href="https://www.pacioos.hawaii.edu/water/sensor-hawaiiyachtclub" target="_blank" rel="noopener">
+      https://www.pacioos.hawaii.edu/water/sensor-hawaiiyachtclub
+    </a>
+  </li>
+  <li>
+    State of Hawaii, Department of Business, Economic Development & Tourism. (n.d.). 
+    <em>Tourism data warehouse</em>. 
+    <a href="https://dbedt.hawaii.gov/visitor/tourismdata" target="_blank" rel="noopener">
+      https://dbedt.hawaii.gov/visitor/tourismdata
+    </a>
+  </li>
+  <li>
+    Surfrider Foundation. (n.d.). 
+    <em>Blue Water Task Force: Oʻahu water quality monitoring</em>. 
+    <a href="https://oahu.surfrider.org/bwtf" target="_blank" rel="noopener">
+      https://oahu.surfrider.org/bwtf
+    </a>
+  </li>
+</ul>
